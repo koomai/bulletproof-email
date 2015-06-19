@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="viewport" content="width=device-width"/>
+        <link rel="stylesheet" href="css/main.css" />
+        <!-- Media Queries -->
+        <style>
+            {{ include('../../dist/local/css/media-queries.css') }}
+        </style>
+    </head>
+    <body>
+        <table class="body">
+            <tr>
+                <td class="center" align="center" valign="top">
+                    <center>
+                      
+                        {{ include('../partials/header.html', { "templateLabel" : "SIDEBAR HERO" }) }}
+
+                        {{ include('../partials/sidebar-hero/introduction.html') }}
+
+                        {{ include('../partials/sidebar-hero/panel.html') }}
+
+                        <!-- two columns -->
+                        <table class="row">
+                          <tr>
+                              <td class="center" align="center">
+                                  <center>
+
+                                      <table class="container">
+                                          <tr>
+                                              <td class="wrapper">
+                                                {{ include('../partials/sidebar-hero/left-column.html') }}
+                                              </td>
+                                              <td class="wrapper last">
+                                                {{ include('../partials/sidebar-hero/right-column.html') }}
+                                              </td>
+                                          </tr>
+                                      </table>
+
+                                  </center>
+                              </td>
+                          </tr>
+                        </table>
+                        <!-- end two columns -->
+                        
+                        {{ include('../partials/footer.html') }}
+
+                    </center>
+                </td>
+            </tr>
+        </table>
+    </body>
+</html>

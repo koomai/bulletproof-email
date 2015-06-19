@@ -1,0 +1,41 @@
+/* Template-specific Styles */
+
+.template-label {
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 11px;
+}
+
+.callout .wrapper {
+  padding-bottom: 20px;
+}
+
+.callout .panel {
+  background: #ECF8FF;
+  border-color: #b9e5ff;
+}
+
+.header {
+  background: $dark-background;
+}
+
+.connect .wrapper {
+  background: $light-background;
+}
+
+.connect h5 {
+  padding-bottom: 10px;
+}
+
+table.columns .text-pad {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+table.columns .left-text-pad {
+  padding-left: 10px;
+}
+
+table.columns .right-text-pad {
+  padding-right: 10px;
+}

@@ -1,0 +1,182 @@
+// Fonts
+$font-family-sans-serif:  Helvetica, Arial, sans-serif;
+$font-family-serif:       "Times New Roman", Times, serif;
+
+$font-size-base:          14px;
+$font-size-large:         ceil(($font-size-base * 1.25)); // ~18px
+$font-size-small:         ceil(($font-size-base * 0.7)); // ~10px
+
+$font-size-h1:            ceil(($font-size-base * 2.85)); // ~40px
+$font-size-h2:            ceil(($font-size-base * 2.55)); // ~36px
+$font-size-h3:            ceil(($font-size-base * 2.25)); // ~32px
+$font-size-h4:            ceil(($font-size-base * 2)); // ~28px
+$font-size-h5:            ceil(($font-size-base * 1.7)); // ~24px
+$font-size-h6:            ceil(($font-size-base * 1.4)); // ~20px
+
+$line-height: 1.3;
+$line-height-px: ceil($font-size-base * $line-height); // ~19px
+
+body, table.body, h1, h2, h3, h4, h5, h6, p, td {
+  color: $text-color;
+  font-size: $font-size-base;
+  font-family: $font-family-sans-serif;
+  font-weight: normal;
+  padding:0;
+  margin: 0;
+  text-align: left;
+  line-height: $line-height;
+}
+
+body, table.body, p, td {
+  font-size: $font-size-base;
+  line-height: $line-height-px;
+}
+
+p.lead, p.lede, p.leed {
+  font-size: $font-size-large;
+  line-height: 21px;
+}
+
+h1 {
+  font-size: $font-size-h1;
+  color: $text-color;
+  font-weight: normal;
+  word-break: normal;
+
+  a {
+    color: $link-color;
+    text-decoration: none;
+
+    &:hover,
+    &:active,
+    &:focus,
+    &:visited {
+      color: $link-color-hover;
+      text-decoration: none;
+    }
+  }
+}
+
+h2 {
+  font-size: $font-size-h2;
+  color: $text-color;
+  font-weight: normal;
+  word-break: normal;
+
+  a {
+    color: $link-color;
+    text-decoration: none;
+
+    &:hover,
+    &:active,
+    &:focus,
+    &:visited {
+      color: $link-color-hover;
+      text-decoration: none;
+    }
+  }
+}
+
+h3 {
+  font-size: $font-size-h3;
+  color: $text-color;
+  font-weight: normal;
+  word-break: normal;
+
+  a {
+    color: $link-color;
+    text-decoration: none;
+
+    &:hover,
+    &:active,
+    &:focus,
+    &:visited {
+      color: $link-color-hover;
+      text-decoration: none;
+    }
+  }
+}
+
+h4 {
+  font-size: $font-size-h4;
+  color: $text-color;
+  font-weight: normal;
+  word-break: normal;
+
+  a {
+    color: $link-color;
+    text-decoration: none;
+
+    &:hover,
+    &:active,
+    &:focus,
+    &:visited {
+      color: $link-color-hover;
+      text-decoration: none;
+    }
+  }
+}
+
+h5 {
+  font-size: $font-size-h5;
+  color: $text-color;
+  font-weight: normal;
+  word-break: normal;
+
+  a {
+    color: $link-color;
+    text-decoration: none;
+
+    &:hover,
+    &:active,
+    &:focus,
+    &:visited {
+      color: $link-color-hover;
+      text-decoration: none;
+    }
+  }
+}
+
+h6 {
+  font-size: $font-size-h6;
+  color: $text-color;
+  font-weight: normal;
+  word-break: normal;
+
+  a {
+    color: $link-color;
+    text-decoration: none;
+
+    &:hover,
+    &:active,
+    &:focus,
+    &:visited {
+      color: $link-color-hover;
+      text-decoration: none;
+    }
+  }
+}
+
+p {
+  margin-bottom: 10px;
+
+  &.lead {
+    font-size: $font-size-large;
+  }
+}
+
+small {
+  font-size: $font-size-small;
+}
+
+a {
+  color: $link-color;
+  text-decoration: underline;
+
+  &:hover,
+  &:active,
+  &:focus,
+  &:visited {
+    color: $link-color-hover;
+  }
+}

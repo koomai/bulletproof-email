@@ -1,0 +1,35 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="viewport" content="width=device-width"/>
+        <link rel="stylesheet" href="css/main.css" />
+        <!-- Media Queries -->
+        <style>
+            {{ include('../../dist/local/css/media-queries.css') }}
+        </style>
+    </head>
+    <body>
+        <table class="body">
+            <tr>
+                <td class="center" align="center" valign="top">
+                    <center>
+                      
+                      {{ include('../partials/header.html', { "templateLabel" : "HERO" }) }}
+
+                      {{ include('../partials/hero/introduction.html') }}
+
+                      {{ include('../partials/hero/callout.html') }}
+
+                      {{ include('../partials/hero/secondary-copy.html') }}
+
+                      {{ include('../partials/hero/connect.html') }}
+
+                      {{ include('../partials/footer.html') }}
+
+                    </center>
+                </td>
+            </tr>
+        </table>
+    </body>
+</html>

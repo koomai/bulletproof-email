@@ -1,0 +1,19 @@
+// Backgrounds
+$body-background: #ffffff;
+$dark-background: #999999;
+$light-background: #ebebeb;
+$panel-background: #2c3e50;
+
+// Text Colors
+$text-color: #222222;
+$alt-text-color: #ffffff;
+
+// Link Colors
+$link-color: #2ba6cb;
+$link-color-hover: darken($link-color, 5%);
+
+// Button Colors
+$button-bg-color: #2ba6cb;
+$button-bg-color-hover: lighten($button-bg-color, 5%);
+$button-border-color: #2284a1;
+$button-text-color: #ffffff;
