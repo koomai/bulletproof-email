@@ -118,4 +118,28 @@ if (argv.prod || argv.production) {
   gulp.task('build', ['compile-sass', 'compile-html', 'copy-images']);
 }
 
-gulp.task('default', ['build']);
+// Build for Production
+gulp.task('build', ['sass', 'html', 'inline-css', 'images:production', 'zip']);
+
+// Default
+gulp.task('default', ['serve']);
+
+/* Global functions */
+// Injects custom messages into stream
+function log(msg, color) {
+  var msgColor = color ? gutil.colors[color] : gutil.colors.blue;
+  if (typeof(msg) === 'object') {
+    for (var item in msg) {
+      if(msg.hasOwnProperty(item)) {
+        gutil.log(msgColor(msg[item]));
+      }
+    }
+  } else {
+    gutil.log(msgColor(msg));
+  }
+}
+// Handles error without breaking stream
+function handleError(err) {
+  console.log(err.toString());
+  this.emit('end');
+}
