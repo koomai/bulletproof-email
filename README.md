@@ -34,14 +34,14 @@ You can download it from [nodejs.org](https://nodejs.org/)
 
 #### Usage
 
-`gulp serve` - starts a local webserver on **http://localhost:8080**
-`gulp serve --port=8888` - starts a local webserver on **http://localhost:8888**
-`gulp serve --open` - opens the URL on your default browser automatically. 
+`gulp serve` - starts a local webserver on **http://localhost:8080**  
+`gulp serve --port=8888` - starts a local webserver on **http://localhost:8888**  
+`gulp serve --open` - opens the URL on your default browser automatically.   
 
-`gulp build` - builds production ready files in *dist/production* folder.
-`gulp build --minify` - minifies your HTML files
-`gulp build --zip` - builds files + creates a zip file of your images directory (for Campaign Monitor)
-`gulp build --zip=all` - builds files and creates a zip file of everything (for Mailchimp)
+`gulp build` - builds production ready files in *dist/production* folder.  
+`gulp build --minify` - minifies your HTML files  
+`gulp build --zip` - builds files + creates a zip file of your images directory (for Campaign Monitor)  
+`gulp build --zip=all` - builds files and creates a zip file of everything (for Mailchimp)  
 
 `gulp clean` - empty your distribution directories
 
