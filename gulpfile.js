@@ -1,7 +1,5 @@
 // Gulp packages
 var gulp = require('gulp');
-var connect = require('gulp-connect');
-var watch = require('gulp-watch');
 var sass = require('gulp-sass');
 var fileinclude = require('gulp-file-include');
 var inlineCss = require('gulp-inline-css');
@@ -13,48 +11,29 @@ var changed = require('gulp-changed');
 // var replace = require('gulp-replace'); TODO: Replace full image URLs in HTML
 var argv = require('yargs').argv;
 var del = require('del');
-
-// Directories for generated files
-var localDir = 'dist/local';
-var productionDir = 'dist/production';
+var browserSync = require('browser-sync').create();
+// Config file
+var config = require('./gulp.config')();
 
 // Local web server (Default localhost:8080)
 // Pass argument --port=XXXX to change
-gulp.task('connect', function() {
-  var port = argv.port ? argv.port : 8080;
-  connect.server({
-    root: localDir,
-    livereload: true,
-    port: port
-  });
-});
+gulp.task('connect', ['html'], function() {
+  browserSync.init({
+          // Serve files from the local directory
+          server: {
+              baseDir: config.localDir,
+              directory: true
+          },
+          port: argv.port ? argv.port : config.browsersync.port,
+          open: config.browsersync.open || (argv.open || false),
+          notify: config.browsersync.notify
+      });
 
-// Live Reload
-gulp.task('livereload', function() {
-  gulp.src([
-    localDir + '/css/*.css',
-    localDir + '/images/*',
-    localDir + '/*.html'
-  ])
-    .pipe(connect.reload());
-});
+    gulp.watch([config.sourcePath.sass, config.sourcePath.html], ['html']);
+    gulp.watch(config.sourcePath.images, ['images']);
 
-// Watch for changes in files
-gulp.task('watch', function() {
-  gulp.watch([
-    'source/stylesheets/**/*.scss',
-    'source/images/*',
-    'source/**/*.html'
-  ], 
-  ['compile-sass', 'compile-html', 'copy-images']
-  );
-  gulp.watch([
-    localDir + '/css/*.css', 
-    localDir + '/images/*',
-    localDir + '/*.html'
-  ], 
-  ['livereload']
-  );
+    gulp.watch(config.localFiles())
+      .on('change', browserSync.reload);
 });
 
 // Build CSS files(s)
