@@ -28,19 +28,22 @@ You can download it from [nodejs.org](https://nodejs.org/)
 
 `npm install --global gulp`
 
-##### Install gulp (plus yargs & del) locally
-
-`npm install gulp yargs del`
-
 ##### Install the gulp plugins in package.json
 
 `npm install`
 
-#### TL;DR
+#### Usage
 
-Run `gulp --serve` and go to **http://localhost:8080** on your browser.
+`gulp serve` - starts a local webserver on **http://localhost:8080**
+`gulp serve --port=8888` - starts a local webserver on **http://localhost:8888**
+`gulp serve --open` - opens the URL on your default browser automatically. 
 
-Run `gulp --prod` and check out the files in *dist/production* folder.
+`gulp build` - builds production ready files in *dist/production* folder.
+`gulp build --minify` - minifies your HTML files
+`gulp build --zip` - builds files + creates a zip file of your images directory (for Campaign Monitor)
+`gulp build --zip=all` - builds files and creates a zip file of everything (for Mailchimp)
+
+`gulp clean` - empty your distribution directories
 
 Continue reading below for more details
 
@@ -84,12 +87,9 @@ Custom styling can be added to `stylesheets/modules/_custom.scss`. You can also 
 
 **Note:** Add all styling for smallers screens (< 580px) to `stylesheets/media-queries.scss`. This is included separately into the HTML files.
 
-### Build Tool
-Run `gulp build` to generate the HTML, CSS and image files in the `dist/local` folder. This is the default task, so you can also just run `gulp`.
-
 ### Local server
 
-Run `gulp --serve` to start a local webserver. Visit **http://localhost:8080** on your browser to test your templates.
+Run `gulp serve` to start a local webserver. Visit **http://localhost:8080** on your browser to test your templates (or run `gulp serve --open` to open the URL automatically on your default browser).
 
 This also instantiates a watcher that:
 
@@ -97,13 +97,13 @@ This also instantiates a watcher that:
 * compiles SASS to CSS
 * builds the HTML files from the templates
 * outputs latest files to *dist/local* folder
-* livereloads the browser
+* uses Browsersync to reload the browser
 
-You can also choose a different port by passing the `--port` argument, e.g. `gulp --serve --port=8888`.
+You can also choose a different port by passing the `--port` argument, e.g. `gulp serve --port=8888`.  You can also change the port permanently in `gulp.config.js`.
 
 ### Production files
 
-For production, run `gulp --prod` or `gulp --production`.
+Run `gulp build` to generate production-ready files.
 
 This compiles production-ready HTML to the *dist/production* folder. It does the following:
 * compiles SASS to CSS
@@ -116,19 +116,21 @@ This compiles production-ready HTML to the *dist/production* folder. It does the
 
 If your newsletters are very long, you should minify the HTML so that Gmail doesn't [clip them](https://www.campaignmonitor.com/forums/topic/8088/what-rule-does-gmail-use-to-decide-when-to-clip-a-message/).
 
-Run `gulp --prod --minify` to minify your HTML files.
+Run `gulp build --minify` to minify your HTML files.
 
 #### Zip files
 
 Some email tools require zip files to upload new templates.
 
-Run `gulp --prod --zip` to compress images only. 
+Run `gulp build --zip` to compress images only. 
 
-Run `gulp --prod --zip=all` to compress images and HTML.
+Run `gulp build --zip=all` to compress images and HTML.
+
+### Configuration
+
+All configuration options are in the `gulp.config.js` file.
 
 ### Misc
-
-* If you want, you can rename the *dist/local* and *dist/production* folders in `gulpfile.js`. 
 * You can run `gulp clean` to clean up your *dist* folders.
 
 ### Contributing
