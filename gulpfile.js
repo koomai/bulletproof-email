@@ -33,7 +33,7 @@ gulp.task('connect', ['html'], function() {
       });
 
     gulp.watch([config.sourcePath.sass, config.sourcePath.html], ['html']);
-    gulp.watch(config.sourcePath.images, ['images']);
+    gulp.watch(config.sourcePath.images, ['images:local']);
 
     gulp.watch(config.localFiles())
       .on('change', browserSync.reload);
