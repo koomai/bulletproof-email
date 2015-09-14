@@ -10,6 +10,7 @@ module.exports = function() {
   var config = {
     localDir: localDir,
     productionDir: productionDir,
+    sourceDir: sourceDir,
     localFiles: [
       localDir + '/css/*.css', 
       localDir + '/images/**/*', 
