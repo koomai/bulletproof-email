@@ -173,11 +173,11 @@ To use your own SMTP configuration, see instructions [here](https://github.com/a
     
 Set default `to`, `from` and `subject` values. `to` and `subject` can be overridden by passing arguments to the task.  
 
+Finally, update `imageHost` with the full Url of the directory where your images are uploaded. The mail task replaces the relative paths with this Url.  
+
 `gulp mail --template=NAME`  
 `gulp mail -t NAME`  
 `gulp mail --template=NAME --to=email@example.com --subject='Lorem Ipsum'`  
-
-Finally, update `imageHost` with the full Url of the directory where your images are uploaded. The mail task replaces the relative paths with this Url.
 
 TODO: upload automatically to S3/Rackspace
 
