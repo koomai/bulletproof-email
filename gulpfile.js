@@ -152,6 +152,25 @@ gulp.task('clone', function() {
 
   return gutil.log('Cloned to ' + gutil.colors.magenta(argv.to) + ' successfully.\n');
 });
+
+// Remove a Template
+gulp.task('remove', function() {
+  var template = argv.template ? argv.template : (argv.t ? argv.t : null);
+
+  if (! template) {
+    return log('***ERROR***: Name of template is missing.\n', 'red');
+  }
+  // Delete from source directory and build directories
+  del([
+    config.sourceDir + '/layouts/' + template + '.html', 
+    config.sourceDir + '/partials/' + template,
+    config.productionDir + '/' + template + '.html', 
+    config.localDir + '/' + template + '.html'
+  ]);
+
+  return log('Removed template ' + gutil.colors.magenta(template) + ' successfully.\n');
+});
+
 /* Tasks */
 // Build for local and start browsersync server
 gulp.task('serve', ['sass', 'html', 'images:local', 'connect']);
