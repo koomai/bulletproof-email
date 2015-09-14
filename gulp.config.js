@@ -3,17 +3,24 @@
 */
 
 module.exports = function() {
+  var sourceDir = 'source';
+  var localDir = 'dist/local';
+  var productionDir = 'dist/production';
+
   var config = {
-    localDir: 'dist/local',
-    productionDir: 'dist/production',
-    localFiles: function() {
-      return [this.localDir + '/css/*.css', this.localDir + '/images/**/*', this.localDir + '/*.html']
-    },
+    localDir: localDir,
+    productionDir: productionDir,
+    sourceDir: sourceDir,
+    localFiles: [
+      localDir + '/css/*.css', 
+      localDir + '/images/**/*', 
+      localDir + '/*.html'
+    ],
     sourcePath: {
-      sass: 'source/stylesheets/**/*.scss',
-      html: 'source/**/*.html',
-      layouts: 'source/layouts/*.html',
-      images: 'source/images/**/*'
+      sass: sourceDir + '/stylesheets/**/*.scss',
+      html: sourceDir + '/**/*.html',
+      layouts: sourceDir + '/layouts/*.html',
+      images: sourceDir + '/images/**/*'
     },
     browsersync: {
       port: 8080,

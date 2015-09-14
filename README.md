@@ -10,9 +10,10 @@ The main features are:
 * SASS stylesheets 
 * CSS inliner
 * Images and HTML Minifier 
-* Gulp build tool and LiveReload
+* Gulp build tool and BrowserSync for live reloading
+* Gulp tasks for efficient workflow  
 
-Bulletproof Email utilises [Zurb Ink](http://zurb.com/ink/templates.php) for its starter templates.
+Bulletproof Email utilises [Zurb Ink](http://zurb.com/ink/templates.php) for its starter templates – however, this is not a requirement. 
 
 ### Getting started
 
@@ -40,8 +41,16 @@ You can download it from [nodejs.org](https://nodejs.org/)
 
 `gulp build` - builds production ready files in *dist/production* folder.  
 `gulp build --minify` - minifies your HTML files  
-`gulp build --zip` - builds files + creates a zip file of your images directory (for Campaign Monitor)  
+`gulp build --zip` - builds files + creates a zip file of your images directory (for Campaign Monitor)    
 `gulp build --zip=all` - builds files and creates a zip file of everything (for Mailchimp)  
+
+`gulp copy --template=NAME` - copies your built template to the clipboard
+`gulp copy -t NAME` - alias for the above task  
+
+`gulp clone --from=NAME --to=NEW` - clones template NAME into NEW    
+
+`gulp remove --template=NAME` - removes template NAME from source and build directories  
+`gulp remove -t NAME` - alias for the above task  
 
 `gulp clean` - empty your distribution directories
 
@@ -72,12 +81,9 @@ You can also pass variables to your partials.
 
 *Partial*:
 
-`<span class="template-label">{{ templateLabel }}</span>` 
+`<span class="template-label">{{ templateLabel }}</span>`   
 
-
-**Note**: Make sure there is a space after the opening double braces and before the closing double braces. 
-
-
+**Note**: Make sure there is a space after the opening double braces and before the closing double braces.  
 
 
 ### SASS 

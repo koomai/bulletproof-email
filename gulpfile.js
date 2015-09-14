@@ -12,6 +12,7 @@ var replace = require('gulp-replace');
 var gutil = require('gulp-util');
 var plumber = require('gulp-plumber');
 var clipboard = require('gulp-clipboard');
+var rename = require('gulp-rename');
 var argv = require('yargs').argv;
 var del = require('del');
 var browserSync = require('browser-sync').create();
@@ -35,7 +36,7 @@ gulp.task('connect', ['html'], function() {
     gulp.watch([config.sourcePath.sass, config.sourcePath.html], ['html']);
     gulp.watch(config.sourcePath.images, ['images:local']);
 
-    gulp.watch(config.localFiles())
+    gulp.watch(config.localFiles)
       .on('change', browserSync.reload);
 });
 
@@ -114,6 +115,60 @@ gulp.task('clean', function () {
     config.productionDir + '/**/**', 
     config.localDir + '/**/**'
   ]);
+});
+
+// Copy a template to the clipboard
+// Pass a template name as an argument --template=NAME or -t NAME
+gulp.task('copy', function() {
+  var template = argv.template ? argv.template : (argv.t ? argv.t : null);
+
+  if (! template) {
+    return log('***ERROR***: Name of template is missing.\n', 'red');
+  }
+  // Copy to Clipboard
+  gulp.src(config.productionDir + '/' + template + '.html')
+    .pipe(clipboard());
+
+  return log('Copied ' + gutil.colors.magenta(template + '.html') + ' to clipboard.\n');
+});
+
+// Clone a Template
+gulp.task('clone', function() {
+
+  if (! argv.from) {
+    return log('***ERROR***: You need to specify a source template.\n', 'red');
+  }
+  if (! argv.to) {
+    return log('***ERROR***: You need to specify a name for the new template.\n', 'red');
+  }
+  // Clone layout
+  gulp.src([config.sourceDir + '/layouts/' + argv.from + '.html'])
+    .pipe(rename(argv.to + '.html'))
+    .pipe(replace(argv.from, argv.to))
+    .pipe(gulp.dest(config.sourceDir + '/layouts/'));
+  // Clone partials
+  gulp.src([config.sourceDir + '/partials/' + argv.from + '/*'])
+    .pipe(gulp.dest(config.sourceDir + '/partials/' + argv.to));
+
+  return gutil.log('Cloned to ' + gutil.colors.magenta(argv.to) + ' successfully.\n');
+});
+
+// Remove a Template
+gulp.task('remove', function() {
+  var template = argv.template ? argv.template : (argv.t ? argv.t : null);
+
+  if (! template) {
+    return log('***ERROR***: Name of template is missing.\n', 'red');
+  }
+  // Delete from source directory and build directories
+  del([
+    config.sourceDir + '/layouts/' + template + '.html', 
+    config.sourceDir + '/partials/' + template,
+    config.productionDir + '/' + template + '.html', 
+    config.localDir + '/' + template + '.html'
+  ]);
+
+  return log('Removed template ' + gutil.colors.magenta(template) + ' successfully.\n');
 });
 
 /* Tasks */
