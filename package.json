@@ -1,10 +1,10 @@
 {
   "name": "bulletproof-email",
-  "version": "0.3.0",
+  "version": "1.0.0",
   "description": "Bulletproof Email",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "postinstall": "cp nodemailer.config.js.example nodemailer.config.js"
   },
   "repository": {
     "type": "git",
@@ -15,6 +15,7 @@
   "devDependencies": {
     "browser-sync": "^2.8.2",
     "del": "~1.2.0",
+    "fs": "0.0.2",
     "gulp": "^3.8.11",
     "gulp-changed": "~1.2.1",
     "gulp-clipboard": "^0.1.1",
@@ -30,6 +31,8 @@
     "gulp-shell": "~0.4.2",
     "gulp-util": "^3.0.6",
     "gulp-zip": "~3.0.2",
+    "nodemailer": "^1.4.0",
+    "nodemailer-smtp-transport": "^1.0.3",
     "yargs": "^3.21.0"
   }
 }
