@@ -1,7 +1,11 @@
 # Change Log
 List of feature updates and fixes.
 
-## [0.3.0] - 2015-09-14
+## [1.0.0] - 2015-09-14
+### Added
+- Send test emails via Nodemailer
+
+## [0.3.0] - 2015-09-13
 ### Added
 - Copy to clipboard
 - Clone a template
