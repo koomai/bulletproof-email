@@ -132,6 +132,26 @@ gulp.task('copy', function() {
   return log('Copied ' + gutil.colors.magenta(template + '.html') + ' to clipboard.\n');
 });
 
+// Clone a Template
+gulp.task('clone', function() {
+
+  if (! argv.from) {
+    return log('***ERROR***: You need to specify a source template.\n', 'red');
+  }
+  if (! argv.to) {
+    return log('***ERROR***: You need to specify a name for the new template.\n', 'red');
+  }
+  // Clone layout
+  gulp.src([config.sourceDir + '/layouts/' + argv.from + '.html'])
+    .pipe(rename(argv.to + '.html'))
+    .pipe(replace(argv.from, argv.to))
+    .pipe(gulp.dest(config.sourceDir + '/layouts/'));
+  // Clone partials
+  gulp.src([config.sourceDir + '/partials/' + argv.from + '/*'])
+    .pipe(gulp.dest(config.sourceDir + '/partials/' + argv.to));
+
+  return gutil.log('Cloned to ' + gutil.colors.magenta(argv.to) + ' successfully.\n');
+});
 /* Tasks */
 // Build for local and start browsersync server
 gulp.task('serve', ['sass', 'html', 'images:local', 'connect']);
