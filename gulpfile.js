@@ -116,6 +116,21 @@ gulp.task('clean', function () {
   ]);
 });
 
+// Copy a template to Clipboard
+// accepts template name as --template=name or -t name
+gulp.task('copy', function() {
+  var template = argv.template ? argv.template : (argv.t ? argv.t : null);
+
+  if (! template) {
+    return log('***ERROR***: File missing.\n', 'red');
+  }
+  // Copy to Clipboard
+  gulp.src(config.productionDir + '/' + template + '.html')
+    .pipe(clipboard());
+
+  return log('Copied ' + gutil.colors.magenta(template + '.html') + ' to clipboard.\n');
+});
+
 /* Tasks */
 // Build for local and start browsersync server
 gulp.task('serve', ['sass', 'html', 'images:local', 'connect']);

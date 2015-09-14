@@ -41,7 +41,10 @@ You can download it from [nodejs.org](https://nodejs.org/)
 `gulp build` - builds production ready files in *dist/production* folder.  
 `gulp build --minify` - minifies your HTML files  
 `gulp build --zip` - builds files + creates a zip file of your images directory (for Campaign Monitor)  
-`gulp build --zip=all` - builds files and creates a zip file of everything (for Mailchimp)  
+`gulp build --zip=all` - builds files and creates a zip file of everything (for Mailchimp)
+
+`gulp copy --template=NAME` - copies your built template to the clipboard
+`gulp copy -t NAME` - alias for the gulp task above
 
 `gulp clean` - empty your distribution directories
 
