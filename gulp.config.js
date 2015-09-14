@@ -2,6 +2,8 @@
 * All gulpfile configuration options
 */
 
+var nodemailerConfig = require('./nodemailer.config')();
+
 module.exports = function() {
   var sourceDir = 'source';
   var localDir = 'dist/local';
@@ -26,7 +28,8 @@ module.exports = function() {
       port: 8080,
       open: false,
       notify: true
-    }
+    },
+    nodemailer: nodemailerConfig
   };
   return config;
 }

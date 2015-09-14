@@ -16,7 +16,9 @@ var rename = require('gulp-rename');
 var argv = require('yargs').argv;
 var del = require('del');
 var browserSync = require('browser-sync').create();
-// Config file
+var nodemailer = require('nodemailer');
+var fs = require('fs');
+// Config files
 var config = require('./gulp.config')();
 
 // Local web server (Default localhost:8080)
@@ -171,6 +173,39 @@ gulp.task('remove', function() {
   return log('Removed template ' + gutil.colors.magenta(template) + ' successfully.\n');
 });
 
+// Send test emails
+gulp.task('mail', function() {
+  var template = argv.template ? argv.template : (argv.t ? argv.t : null);
+
+  if (! template) {
+    return log('***ERROR***: Name of template is missing\n', 'red');
+  }
+
+  // Nodemailer
+  var transporter = nodemailer.createTransport(config.nodemailer.transportOptions);
+  var mailOptions = config.nodemailer.mailOptions;
+  // Update config values
+  mailOptions.to = argv.to ? argv.to : config.nodemailer.mailOptions.to;
+  mailOptions.subject = argv.subject ? argv.subject : config.nodemailer.mailOptions.subject;
+
+  // get template contents and send email
+  fs.readFile(config.productionDir + '/' + template + '.html', 'utf8', function(err, data) {
+    if(err) {
+      handleError(err);
+    }
+    mailOptions.html = data;
+
+    // Send the email
+    transporter.sendMail(mailOptions, function(err, info){
+      if(err) {
+        handleError(err);
+      }
+      log('Test email for template ' + gutil.colors.magenta(template) + ' sent successfully \n');
+    });
+
+  });
+});
+
 /* Tasks */
 // Build for local and start browsersync server
 gulp.task('serve', ['sass', 'html', 'images:local', 'connect']);
@@ -198,6 +233,6 @@ function log(msg, color) {
 // Handles error without breaking stream
 function handleError(err) {
   gutil.beep();
-  console.log(err.toString());
+  log(err.toString());
   this.emit('end');
 }

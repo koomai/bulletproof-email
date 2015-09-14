@@ -1,3 +1,4 @@
 dist/
 node_modules/
+nodemailer.config.js
 source/.DS_Store
