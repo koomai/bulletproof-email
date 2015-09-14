@@ -233,6 +233,6 @@ function log(msg, color) {
 // Handles error without breaking stream
 function handleError(err) {
   gutil.beep();
-  log(err.toString());
+  log(err.toString(), 'red');
   this.emit('end');
 }
