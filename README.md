@@ -37,7 +37,8 @@ You can download it from [nodejs.org](https://nodejs.org/)
 
 `gulp serve` - starts a local webserver on **http://localhost:8080**  
 `gulp serve --port=8888` - starts a local webserver on **http://localhost:8888**  
-`gulp serve --open` - opens the URL on your default browser automatically.   
+`gulp serve --open` - opens the URL on your default browser automatically.  
+`gulp serve -o` - alias for the above task  
 
 `gulp build` - builds production ready files in *dist/production* folder.  
 `gulp build --minify` - minifies your HTML files  
@@ -99,7 +100,9 @@ Custom styling can be added to `stylesheets/modules/_custom.scss`. You can also 
 
 ### Local server
 
-Run `gulp serve` to start a local webserver. Visit **http://localhost:8080** on your browser to test your templates (or run `gulp serve --open` to open the URL automatically on your default browser).
+Run `gulp serve` to start a local webserver. Visit **http://localhost:8080** on your browser to test your templates.  
+
+You can run `gulp serve --open` or `gulp serve -o` to open the URL automatically on your default browser. You can set this option permanently by setting `browsersync.open` to `true` in `gulp.config.js`.  
 
 This also instantiates a watcher that:
 
@@ -174,6 +177,9 @@ Set default `to`, `from` and `subject` values. `to` and `subject` can be overrid
 `gulp mail -t NAME`  
 `gulp mail --template=NAME --to=email@example.com --subject='Lorem Ipsum'`  
 
+Finally, update `imageHost` with the full Url of the directory where your images are uploaded. The mail task replaces the relative paths with this Url.
+
+TODO: upload automatically to S3/Rackspace
 
 ### Misc  
 

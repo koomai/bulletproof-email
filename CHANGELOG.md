@@ -1,6 +1,10 @@
 # Change Log
 List of feature updates and fixes.
 
+## [1.0.2] - 2015-09-15
+### Changed
+- Full Url paths to images when testing with Nodemailer
+
 ## [1.0.0] - 2015-09-14
 ### Added
 - Send test emails via Nodemailer

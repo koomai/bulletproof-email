@@ -31,7 +31,7 @@ gulp.task('connect', ['html'], function() {
               directory: true
           },
           port: argv.port ? argv.port : config.browsersync.port,
-          open: config.browsersync.open || (argv.open || false),
+          open: config.browsersync.open || (argv.open || (argv.o || false)),
           notify: config.browsersync.notify
       });
 
@@ -193,7 +193,8 @@ gulp.task('mail', function() {
     if(err) {
       handleError(err);
     }
-    mailOptions.html = data;
+    var regExp = /(\.\.)?\/?images\//g;
+    mailOptions.html = data.replace(regExp, config.nodemailer.imageHost);
 
     // Send the email
     transporter.sendMail(mailOptions, function(err, info){
