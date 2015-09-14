@@ -1,6 +1,6 @@
 {
   "name": "bulletproof-email",
-  "version": "0.3.0",
+  "version": "1.0.0",
   "description": "Bulletproof Email",
   "main": "index.js",
   "scripts": {
