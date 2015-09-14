@@ -117,8 +117,8 @@ gulp.task('clean', function () {
   ]);
 });
 
-// Copy a template to Clipboard
-// accepts template name as --template=name or -t name
+// Copy a template to the clipboard
+// Pass a template name as an argument --template=NAME or -t NAME
 gulp.task('copy', function() {
   var template = argv.template ? argv.template : (argv.t ? argv.t : null);
 
