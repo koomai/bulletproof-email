@@ -123,7 +123,7 @@ gulp.task('copy', function() {
   var template = argv.template ? argv.template : (argv.t ? argv.t : null);
 
   if (! template) {
-    return log('***ERROR***: File missing.\n', 'red');
+    return log('***ERROR***: Name of template is missing.\n', 'red');
   }
   // Copy to Clipboard
   gulp.src(config.productionDir + '/' + template + '.html')
