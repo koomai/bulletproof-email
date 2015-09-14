@@ -1,5 +1,4 @@
-## Bulletproof Email
-
+## Bulletproof Email  
 
 **Bulletproof Email** is an HTML email template builder powered by Gulp.
 
@@ -11,7 +10,8 @@ The main features are:
 * CSS inliner
 * Images and HTML Minifier 
 * Gulp build tool and BrowserSync for live reloading
-* Gulp tasks for efficient workflow  
+* Send test emails via [Nodemailer](https://github.com/andris9/nodemailer)
+* Gulp tasks for an efficient workflow  
 
 Bulletproof Email utilises [Zurb Ink](http://zurb.com/ink/templates.php) for its starter templates – however, this is not a requirement. 
 
@@ -42,9 +42,13 @@ You can download it from [nodejs.org](https://nodejs.org/)
 `gulp build` - builds production ready files in *dist/production* folder.  
 `gulp build --minify` - minifies your HTML files  
 `gulp build --zip` - builds files + creates a zip file of your images directory (for Campaign Monitor)    
-`gulp build --zip=all` - builds files and creates a zip file of everything (for Mailchimp)  
+`gulp build --zip=all` - builds files and creates a zip file of everything (for Mailchimp)
 
-`gulp copy --template=NAME` - copies your built template to the clipboard
+`gulp mail --template=NAME` - send a test email using your default configuration in `nodemailer.config.js`  
+`gulp mail -t NAME` - alias for the above task  
+`gulp mail --template=NAME --to=email@example.com --subject='Lorem Ipsum'` - send a test email with overrides   
+
+`gulp copy --template=NAME` - copies your built template to the clipboard  
 `gulp copy -t NAME` - alias for the above task  
 
 `gulp clone --from=NAME --to=NEW` - clones template NAME into NEW    
@@ -52,7 +56,7 @@ You can download it from [nodejs.org](https://nodejs.org/)
 `gulp remove --template=NAME` - removes template NAME from source and build directories  
 `gulp remove -t NAME` - alias for the above task  
 
-`gulp clean` - empty your distribution directories
+`gulp clean` - empty your build directories  
 
 Continue reading below for more details
 
@@ -134,10 +138,46 @@ Run `gulp build --zip=all` to compress images and HTML.
 
 ### Configuration
 
-All configuration options are in the `gulp.config.js` file.
+All configuration options are in the `gulp.config.js` file.  
+To send emails using Nodemailer, update `nodemailer.config.js` with your email credentials and other mail options.  
 
-### Misc
-* You can run `gulp clean` to clean up your *dist* folders.
+### Nodemailer  
+
+[Nodemailer](https://github.com/andris9/nodemailer) lets you quickly test your html email templates. 
+
+First update `nodemailer.config.js` with your email credentials and default mail options.  
+
+**Email credentials**  
+
+`transportOptions: {  
+  service: 'mailgun',    
+  auth: {  
+    user: '',  
+    pass: ''  
+  }  
+}`    
+
+Nodemailer supports a lot of services - see the full list [here](https://github.com/andris9/nodemailer-wellknown#supported-services).  
+To use your own SMTP configuration, see instructions [here](https://github.com/andris9/nodemailer-smtp-transport#usage).  
+  
+**Mail Options**  
+
+`mailOptions: {  
+  to: '',  
+  from: '',  
+  subject: ''  
+}`  
+    
+Set default `to`, `from` and `subject` values. `to` and `subject` can be overridden by passing arguments to the task.  
+
+`gulp mail --template=NAME`  
+`gulp mail -t NAME`  
+`gulp mail --template=NAME --to=email@example.com --subject='Lorem Ipsum'`  
+
+
+### Misc  
+
+Run `gulp clean` to clean up your build directories.
 
 ### Contributing
 
