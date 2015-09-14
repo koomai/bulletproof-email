@@ -12,6 +12,7 @@ var replace = require('gulp-replace');
 var gutil = require('gulp-util');
 var plumber = require('gulp-plumber');
 var clipboard = require('gulp-clipboard');
+var rename = require('gulp-rename');
 var argv = require('yargs').argv;
 var del = require('del');
 var browserSync = require('browser-sync').create();
