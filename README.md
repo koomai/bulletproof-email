@@ -39,31 +39,31 @@ $ yarn install
 
 #### Usage
 
-`gulp serve` - starts a local webserver on **[http://localhost:8080](http://localhost:8080)**
-`gulp serve --port=8888` - starts a local webserver on **[http://localhost:8888](http://localhost:8888)**
-`gulp serve --open` - opens the URL on your default browser automatically.
-`gulp serve -o` - alias for the above task
+`gulp serve` - starts a local webserver on **[http://localhost:8080](http://localhost:8080)**  
+`gulp serve --port=8888` - starts a local webserver on **[http://localhost:8888](http://localhost:8888)**  
+`gulp serve --open` - opens the URL on your default browser automatically.  
+`gulp serve -o` - alias for the above task  
 
-`gulp build` - builds production ready files in *dist/production* folder.
-`gulp build --minify` - minifies your HTML files
-`gulp build --zip` - builds files + creates a zip file of your images directory (for Campaign Monitor)
-`gulp build --zip=all` - builds files and creates a zip file of everything (for Mailchimp)
+`gulp build` - builds production ready files in *dist/production* folder.  
+`gulp build --minify` - minifies your HTML files  
+`gulp build --zip` - builds files + creates a zip file of your images directory (for Campaign Monitor)  
+`gulp build --zip=all` - builds files and creates a zip file of everything (for Mailchimp)  
 
-`gulp mail --template=NAME` - send a test email using your default configuration in `nodemailer.config.js`
-`gulp mail -t NAME` - alias for the above task
-`gulp mail --template=NAME --to=email@example.com --subject='Lorem Ipsum'` - send a test email with overrides
+`gulp mail --template=NAME` - send a test email using your default configuration in `nodemailer.config.js`  
+`gulp mail -t NAME` - alias for the above task  
+`gulp mail --template=NAME --to=email@example.com --subject='Lorem Ipsum'` - send a test email with overrides  
 
-`gulp copy --template=NAME` - copies your built template to the clipboard
-`gulp copy -t NAME` - alias for the above task
+`gulp copy --template=NAME` - copies your built template to the clipboard  
+`gulp copy -t NAME` - alias for the above task  
 
-`gulp clone --from=NAME --to=NEW` - clones template NAME into NEW
+`gulp clone --from=NAME --to=NEW` - clones template NAME into NEW  
 
-`gulp remove --template=NAME` - removes template NAME from source and build directories
-`gulp remove -t NAME` - alias for the above task
+`gulp remove --template=NAME` - removes template NAME from source and build directories  
+`gulp remove -t NAME` - alias for the above task  
 
-`gulp clean` - empty your build directories
+`gulp clean` - empty your build directories  
 
-Continue reading below for more details
+Continue reading below for more details  
 
 ### Working with files
 
